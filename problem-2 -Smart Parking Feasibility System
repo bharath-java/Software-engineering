@@ -1,0 +1,77 @@
+Problem 2: Feasibility Study for a Smart Parking System
+
+Implementation: Smart Parking Feasibility Analysis and Cost-Benefit Estimation System
+
+class SmartParkingFeasibility:
+    def __init__(self, sensors, sensor_cost, app_cost, maintenance_cost, annual_income):
+        self.sensors = sensors
+        self.sensor_cost = sensor_cost
+        self.app_cost = app_cost
+        self.maintenance_cost = maintenance_cost
+        self.annual_income = annual_income
+
+    def technical_feasibility(self):
+        if self.sensors > 0:
+            return "Technically Feasible"
+        return "Not Technically Feasible"
+
+    def operational_feasibility(self):
+        if self.annual_income > self.maintenance_cost:
+            return "Operationally Feasible"
+        return "Not Operationally Feasible"
+
+    def calculate_total_cost(self):
+        return (self.sensors * self.sensor_cost) + self.app_cost + self.maintenance_cost
+
+    def calculate_profit(self):
+        return self.annual_income - self.calculate_total_cost()
+
+    def financial_feasibility(self):
+        if self.calculate_profit() > 0:
+            return "Financially Feasible"
+        return "Not Financially Feasible"
+
+    def display_report(self):
+        print("\nSMART PARKING FEASIBILITY REPORT")
+        print("-" * 45)
+        print("Technical Feasibility :", self.technical_feasibility())
+        print("Operational Feasibility:", self.operational_feasibility())
+        print("Financial Feasibility :", self.financial_feasibility())
+        print("Total Project Cost     : Rs.", self.calculate_total_cost())
+        print("Expected Annual Income : Rs.", self.annual_income)
+        print("Expected Profit        : Rs.", self.calculate_profit())
+
+
+sensors = int(input("Enter number of parking sensors: "))
+sensor_cost = float(input("Enter cost of each sensor: "))
+app_cost = float(input("Enter mobile application development cost: "))
+maintenance_cost = float(input("Enter annual maintenance cost: "))
+annual_income = float(input("Enter expected annual income: "))
+
+parking_system = SmartParkingFeasibility(
+    sensors,
+    sensor_cost,
+    app_cost,
+    maintenance_cost,
+    annual_income
+)
+
+parking_system.display_report()
+
+
+
+Output:
+Enter number of parking sensors: 45
+Enter cost of each sensor: 80
+Enter mobile application development cost: 90
+Enter annual maintenance cost: 20
+Enter expected annual income: 80000
+
+SMART PARKING FEASIBILITY REPORT
+---------------------------------------------
+Technical Feasibility : Technically Feasible
+Operational Feasibility: Operationally Feasible
+Financial Feasibility : Financially Feasible
+Total Project Cost     : Rs. 3710.0
+Expected Annual Income : Rs. 80000.0
+Expected Profit        : Rs. 76290.0
